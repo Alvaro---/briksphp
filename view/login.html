@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<title>Briks4Kids</title>
+	<link rel="stylesheet" type="text/css" href="view/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="view/css/estilo1.css">
+</head>
+
+<body>
+
+<div class="text-center" id="login">
+
+<hr>
+<div class="container-fluid">
+	
+	<!-- FILA DE INSTRUCCION -->
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<h1>Bienvenido</h1>
+			<p>Ingresa tus datos </p>
+		</div>
+	</div>
+	
+	<hr>
+	<form action="controller/controlLogin.php" method="post" class="form-signin">
+	
+	<!--Ingreso de Nombre -->
+		<div class="row">
+			<div class="col-md-1 col-md-offset-4">
+				<label for="inputNombre">Nombre:</label>
+			</div>
+			<div class="col-md-3 col-md-pffset-4">
+				<input type="text" name="inputNombre" required>	
+			</div>
+		</div>
+
+		</br>
+
+	<!--Ingreso de Clave -->
+		<div class="row">
+			<div class="col-md-1 col-md-offset-4">
+				<label for="inputClave">Clave:</label>
+			</div>
+			<div class="col-md-3 col-md-pffset-4">
+				<input type="password" name="inputClave" required>
+			</div>
+		</div>
+
+		</br>
+
+	<!-- Boton Submit-->
+		<div class="row">
+			<div class="col-md-4 col-md-offset-4">
+				<input type="submit" value="Entrar">
+			</div>
+		</div>
+
+	</form>
+	<hr>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
