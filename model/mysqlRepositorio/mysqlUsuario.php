@@ -2,6 +2,7 @@
 
 include ('model/repositorios/repositoriUser.php');
 include ('controller/db.php');
+//include ('model/clases/usuario.php');
 
 class mysqlUsuario implements repositoriUser{
 
@@ -14,14 +15,14 @@ class mysqlUsuario implements repositoriUser{
 		$stmt=$bd->ejecutar($sql);
 		$array=$bd->obtener_fila ($stmt, 0);
 
-		/*if ($usuario=="Alvaro" && $clave=="123456")
-			return true;
-		else return false;*/
+		$user=null;
 
 		if (isset($array[0])){
-			return true;
+			$user=new usuario($usuario, $clave);
+			$user->setTipoUsuario($array[2]);
+			return $user;
 		}else{
-			return false;
+			return $user;
 		}
 	}
 }

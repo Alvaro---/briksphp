@@ -2,8 +2,6 @@
 	
 	include 'model/clases/usuario.php';
 	class controlLogin {
-
-
 		public $usuario;
 
 		public $inactivo = 900;
@@ -18,9 +16,13 @@
 				$clave=$_REQUEST['inputClave'];
 
 				$usuario=new usuario($nombre,$clave);
-				if($usuario->validarUsuario()){
+				$resultado=$usuario->validarUsuario();
+				if(isset($resultado)){
 					session_start();
 					$_SESSION['usuario']=$nombre;
+					$_SESSION['tipo']=$resultado->getTipoUsuario();
+					$_SESSION['pagina']="inicio.php";
+					//echo $_SESSION['tipo']; FUNCIONA¡¡¡¡¡ MVC CON PATRON REPOSITORY
 					include('view/menu.php');
 				}	
 				else
@@ -31,8 +33,10 @@
 				if(! isset($_SESSION["usuario"])){ 
  					include('view/login.html');	  	
     				exit;
-				}else
+				}else{
+					$_SESSION['pagina']="inicio.php";
 					include('view/menu.php');
+				}
 			}
 			
 		}

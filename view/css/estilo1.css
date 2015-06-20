@@ -17,3 +17,41 @@ body{
 */
 }
 
+
+#cajaMargen{
+	width: -webkit-fit-content;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding: 20px;
+	border: 1px dotted;	
+}
+
+#cajaMargenGrande{
+	border: 1px dotted;	
+}
+
+#pagina{
+	border: 1px solid;
+	border-radius: 25px;
+}
+
+
+
+/* CONTENERDORES VENTANAS MODALES */
+#modal {
+	width:100%; /*Toma el 100% del ancho de la página*/
+	height:100%; /*Toma el 100% del alto de la página*/
+	position:fixed; /*Con este código hacemos que el contenedor se mantenga en la pantalla y para que tome las dimensiones del body y no de la entrada*/
+	background-color: rgba(1, 1, 1, 0.9); /*Color de fondo, incluye opacidad del 90%*/
+	top:0; /*Position superior*/
+	left:0; /*Posición lateral*/
+	z-index:9999; /*Evitamos que algún elemento del blog sobreponga la ventana modal*/
+}
+#contenido-interno { 
+	margin:140px auto; /*Separación arriba y centrado*/
+	font-size:12px; /*Tamaño de la fuente*/
+	width:100%; /*Ancho del contenedor*/
+	text-align:center; /*Alineación del texto*/
+	color:#222; /*Color del texto*/
+	background:#fff; /*Color de fondo*/
+}

@@ -5,38 +5,84 @@
 if(! isset($_SESSION["usuario"])){ 
     Header('Location: ../index.php'); 
     exit;
+}else{
+	$pagina=$_SESSION['pagina'];
 }
+
 ?>
 
 <html>
 <head>
 	<title> Briks4 kids Menu</title>
+
+
 	<link rel="stylesheet" type="text/css" href="view/bootstrap/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="view/css/estilo1.css">
 	<link rel="stylesheet" type="text/css" href="view/css/estiloNavegacion.css">
+
+    <script type="text/javascript" src="view/js/seleccionPadres.js"></script>
+    <script type="text/javascript" src="../view/js/validacionesCampos.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../view/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/estilo1.css">
+	<link rel="stylesheet" type="text/css" href="../view/css/estiloNavegacion.css">
+
+    <script type="text/javascript" src="../view/js/seleccionPadres.js"></script>
+    <script type="text/javascript" src="../view/js/validacionesCampos.js"></script>
+
+    
+
 </head>
 <body>
 
 	<div class="container">
 		<h1>Menu </h1>
-		<a href="controller/controlLogout.php">Cerrar Sesion</a>
+		<a href="/brikssphp/controller/controlLogout.php">Cerrar Sesion</a>
+	</div>
+	
+	<nav id="menu">
+        <ul>
+            <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=inicio.php">Inicio</a></li>
+            <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=niños.php">Niños</a>
+                <ul>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=registro.php">Registar Niño</a>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=inscribirenMateria.php">Inscribir</a>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=vern.php">Verificar Datos</a>
+                </ul>
+            </li>
+            <li class="nivel1"><a href="#">Materias</a> 
+            	<ul>
+            		<li><a href="/brikssphp/controller/controlMenu.php?pag=vermaterias">Ver materias</a></li>
+            	</ul>
+            </li>
+            <li class="nivel1"><a href="#">Modelos</a></li>
+            <li class="nivel1"><a href="#">Horarios</a></li>
+            <li class="nivel1"><a href="#">Usuarios</a>
+                <ul>
+                    <li><a href="#">Crear Usuario</a></li>
+                    <li><a href="#">Modificar Usuarios</a></li>
+                    <li><a href="#">Eliminar Usuarios</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <hr>
+    <br>
+    <hr>
+
+
+	<div class="container" id="pagina"> 
+
+		<?php
+			include ($pagina);
+		?>
+
 	</div>
 
-	<nav class="clearfix"> 
-	    <ul class="clearfix"> 
-	        <li><a href="#">Inicio</a></li> 
-	        <li><a href="#">Niños</a></li> 
-	        <li><a href="#">Materias</a></li> 
-	        <li><a href="#">Horarios</a></li> 
-	        <li><a href="#">Modelos</a></li> 
-	        <li><a href="#">Usuarios</a></li>     
-	    </ul> 
-    	<a href="#" id="pull">Menu</a> 
-	</nav> 
 
-
-
-
+    <hr>
+    <hr>
 
 </body>
 </html>

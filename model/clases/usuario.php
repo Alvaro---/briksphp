@@ -17,6 +17,15 @@ class usuario {
 		$this->repository=new mysqlUsuario;
 	}
 
+	public function getTipoUsuario (){
+		return $this->tipUsuario;
+	}
+
+	public function setTipoUsuario ($tipUsuario){
+		$this->tipUsuario=$tipUsuario;
+	}
+
+
 	public function validarUsuario(){
 		return $this->repository->validarUsuario($this->nombre, $this->clave);
 	}
