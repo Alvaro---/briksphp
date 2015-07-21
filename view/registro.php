@@ -1,11 +1,9 @@
 <h1> Registrar Alumno </h1>
 
-<p id="avisoRegistro"></p>
-
 <hr>
 <!-- Dos partes principales -->
-<div class="container-fluid" id="cajaMargenGrande" method="post">
-<form class="form-horizontal" role="form">
+<div class="container-fluid" id="cajaMargenGrande">
+<form class="form-horizontal" role="form" method="post">
 	<!--DATOS DE ALUMNO -->
 	<div class="col-md-6">
 		
@@ -90,7 +88,7 @@
 		<div class="row">
 		<label for="correoPapa" class="col-md-4 control-label">Correo:</label>
 		<div class="col-md-8">
-			<input type="text" class="form-control" id="correoPapa" placeholder="Correo Papá" name="correoPapa">
+			<input type="email" class="form-control" id="correoPapa" placeholder="Correo Papá" name="correoPapa">
 		</div>
 		</div>
 
@@ -126,7 +124,7 @@
 		<div class="row">
 		<label for="correoMama" class="col-md-4 control-label">Correo:</label>
 		<div class="col-md-8">
-			<input type="text" class="form-control" id="correoMama" placeholder="Correo Mama" name="correoMama">
+			<input type="email	" class="form-control" id="correoMama" placeholder="Correo Mama" name="correoMama">
 		</div>
 		</div>
 
@@ -141,8 +139,8 @@
 	<!-- BOTONES DE REGISTRO --> 
 	<div class="row">
 	<div class="col-md-offset-4 col-md-8" id="cajaMargen">
-		<button type="submit" class="btn btn-primary" formaction="controlRegistroInscripcion.php">Guardar e inscribir</button>
-		<button type="submit" class="btn btn-primary" formaction="controlRegistro.php">Guardar</button>
+		<button type="submit" class="btn btn-primary" name="inscribir" formaction="controlRegistro.php">Guardar e inscribir</button>
+		<button type="submit" class="btn btn-primary" name="continuar" formaction="controlRegistro.php">Guardar</button>
 		<button type="reset" class="btn btn-primary">Limpiar Campos</button>
 
 	</div>

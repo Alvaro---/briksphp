@@ -1,6 +1,7 @@
 <?php
 
-include ('../model/mysqlRepositorio/mysqlNino.php');
+//include ('../model/mysqlRepositorio/mysqlNino.php');
+include ($_SERVER["DOCUMENT_ROOT"]."/brikssphp/model/mysqlRepositorio/mysqlNino.php");
 
 class nino{
 	public $idNino;
@@ -12,6 +13,7 @@ class nino{
 	public $telefono;
 	public $nacimiento;
 	public $notas;
+	public $estado;
 
 	protected $repository;
 
@@ -23,6 +25,14 @@ class nino{
 		$this->repository=new mysqlNino;
 	}
 
+	public function getIdNino (){
+		return $this->idNino;
+	}
+
+	public function setIdNino ($idNino){
+		$this->idNino=$idNino;
+	}
+
 	public function getNombre (){
 		return $this->nombre;
 	}
@@ -32,7 +42,7 @@ class nino{
 	}
 
 	public function getApPaterno (){
-		return $this->tipUsuario;
+		return $this->apPaterno;
 	}
 
 	public function setApPaterno ($apPaterno){
@@ -71,6 +81,14 @@ class nino{
 		$this->notas=$notas;
 	}
 
+	public function getEstado (){
+		return $this->estado;
+	}
+
+	public function setEstado ($estado){
+		$this->estado=$estado;
+	}
+
 	public function getIdContacto1 (){
 		return $this->idContacto1;
 	}
@@ -88,13 +106,29 @@ class nino{
 	}
 
 	public function guardarNuevoAlumno(){
-		return $this->repository->guardarNino($this);
+		$retorno=$this->repository->guardarNino($this);
+		if ($retorno==""){
+			//OBTENER ULTIMO ID INGRESADO
+			$this->idNino=$this->repository->obtenerUltimoId();
+		}else{
+			//OBTENER EL ID DEL USUARIO EXISTENTE
+			$this->idNino=$this->repository->obtenerIdActual($this);
+			//echo $this->repository->guardarContacto($this)."<br>";
+		}
+		return $retorno;
 	}
 
+	public function cargarNinosNombre($nombre){
+		return $this->repository->cargarNinosNombre($nombre);
+	}
 
+	public function cargarNinosTelefono($telf){
+		return $this->repository->cargarNinosTelefono($telf);
+	}
 
-
-
+	public function cargarNinosNombreTelf($nombre, $telf){
+		return $this->repository->cargarNinosNombreTelf($nombre, $telf);
+	}
 }
 
 ?>

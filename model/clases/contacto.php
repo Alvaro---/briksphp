@@ -4,6 +4,7 @@ include ('../model/mysqlRepositorio/mysqlContacto.php');
 
 class contacto{
 
+	public $idContacto;
 	public $nombre;
 	public $celular;
 	public $correo;
@@ -14,6 +15,14 @@ class contacto{
 	public function __construct($nombre){
 		$this->nombre=$nombre;
 		$this->repository=new mysqlContacto;
+	}
+
+	public function getIdContacto (){
+		return $this->idContacto;
+	}
+
+	public function setIdContacto ($idContacto){
+		$this->idContacto=$idContacto;
 	}
 
 	public function getNombre (){
@@ -49,7 +58,15 @@ class contacto{
 	}
 
 	public function guardarContacto(){
-		$this->repository->guardarContacto($this);
+		if ($this->repository->guardarContacto($this)==""){
+			//echo "sin error <br>";
+			//OBTENER ULTIMO ID INGRESADO
+			$this->idContacto=$this->repository->obtenerUltimoId();
+		}else{
+			//OBTENER EL ID DEL USUARIO EXISTENTE
+			$this->idContacto=$this->repository->obtenerIdActual($this);
+			//echo $this->repository->guardarContacto($this)."<br>";
+		}
 	}
 
 }

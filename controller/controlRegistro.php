@@ -28,12 +28,18 @@ class controlRegistro{
 	public $contacto1;
 	public $contacto2;
 
-	public function __construct (){
+	//BOTON
+	public $accion;
+	public $guardado;
+
+	public function __construct ($accion){
 		$this->cargarDatos();
 		$this->crearObjetos();
+		$this->guardarContacto($this->contacto1);
+		$this->guardarContacto($this->contacto2);
+		$this->actualizarIdContactos();
 		$this->guardarNino();
-		$this->guardarContato1();
-		$this->guardarContacto2();
+		$this->accion=$accion;
 		$this->redirigir();
 	}
 
@@ -60,7 +66,7 @@ class controlRegistro{
 	//CREACION DE TODOS LOS OBJETOS
 	public function crearObjetos(){
 		//OBJETO NIÑO
-		$this->nino=new nino($this->nombre,$this->apPaterno,$this->apMaterno);
+		$this->nino=new nino($this->nombre, $this->apPaterno, $this->apMaterno);
 
 		$this->nino->setNacimiento($this->nacimiento);
 		$this->nino->setTelefono($this->telefono);
@@ -68,7 +74,6 @@ class controlRegistro{
 
 		//CONTACTO PAPA - O CONTACTO1
 		$this->contacto1=new contacto($this->nombrePapa);
-
 		$this->contacto1->setCelular($this->celPapa);
 		$this->contacto1->setCorreo($this->correoPapa);
 		$this->contacto1->setDireccion($this->direccionPapa);
@@ -80,30 +85,53 @@ class controlRegistro{
 		$this->contacto2->setDireccion($this->direccionMama);
 
 	}
+
+	public function actualizarIdContactos(){
+		$this->nino->setIdContacto1($this->contacto1->getIdContacto());
+		$this->nino->setIdContacto2($this->contacto2->getIdContacto());
+	}
+
+
 	//GUARDADO DEL NIÑO
 	public function guardarNino(){
-		$this->nino->guardarNuevoAlumno();
+		if($this->nino->guardarNuevoAlumno()){ // SI DEVUELVE ALGUN ERROR
+			$this->guardado="no";
+		}
+		else
+			$this->guardado="ok";
 	}
 
-	public function guardarContato1(){
-		$this->contacto1->guardarContacto();
-	}
-
-	public function guardarContacto2(){
-		$this->contacto2->guardarContacto();
+	public function guardarContacto($contact){
+		$contact->guardarContacto();
+		//echo "IdContacto1: ".$this->contacto1->getIdContacto()."<br>";
+		//echo "IdContacto2: ".$this->contacto2->getIdContacto()."<br>";
 	}
 
 	//	REDIRIGE A LA PAGINA DESEADA
 	public function redirigir(){
 		@session_start(); 
-		$_SESSION['pagina']="registro.php";
-		include_once ('../view/menu.php');
+		if ($this->accion=="continuar"){
+			$_SESSION['pagina']="registro.php";
+			$_SESSION['guardadoCorrecto']=$this->guardado;
+			include_once ('../view/menu.php');
+		}else {
+			$_SESSION['guardadoCorrecto']=$this->guardado;
+			$_SESSION['pagina']="inscribirenMateria.php";
+			$_SESSION['inscribirAlumno']=$this->nino;
+			echo $_SESSION['guardadoCorrecto']."<br>";
+			echo $this->nino->getIdNino();
+			echo $this->nino->getNombre();
+
+			include_once ('../view/menu.php');
+		}
 	}
 }
 
 //	CREACION DE LA CLASE	//**********************************************************************/
 
-$controlRegistro=new controlRegistro();
-
+if (isset($_REQUEST['continuar']))
+	$controlRegistro=new controlRegistro("continuar");
+else 
+	$controlRegistro=new controlRegistro("inscribir");
 
 ?>
