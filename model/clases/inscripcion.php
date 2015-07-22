@@ -49,7 +49,22 @@
 		}
 
 		public function guardarInscripcion(){
-			return $this->repository->guardarInscripcion($this);
+			if ($this->repository->guardarInscripcion($this)=="")
+				return true;
+			else
+				return false;
+
+		}
+
+		public function actualizarInscripcion(){
+			if ($this->repository->actualizarInscripcion($this)=="")
+				return true;
+			else
+				return false;
+		}
+
+		public function cargarHorarioCompleto(){
+			return $this->repository->cargarHorarioCompleto($this);
 		}
 
 

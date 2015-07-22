@@ -27,7 +27,7 @@ function obtenerIdHorario(){
 		dataType	:'json',
 		encode		:true
 	}).done(function(data){
-		console.log(data);
+		//console.log(data);
 		//alert(data.DATA[0].idHorario);
 		horario=data.DATA[0].idHorario;
 		//alert(horario);
@@ -57,10 +57,42 @@ function guardarInscripcion(codHorario){
 			dataType	:'json',
 			encode		:true
 		}).done(function(data){
-			console.log(data);
-			console.log(data.ERROR);
+			if (data){
+				alert("Datos Guardados Correctamente");
+				idNino=$('#lblIdAlumno').change();
+			}else{
+				confirmar=confirm("El niño ya esta inscrito en esta materia, este horario. Se añadiran las "+sesiones+" sesiones a su inscripcion");
+				if (confirmar)
+					actualizarInscripcion(sesiones, idNino, codHorario);
+				else
+					alert("verifique los datos");
+			}
+
 		});
 	}else{
 		alert('verifique los datos del niño')
 	}
+}
+
+function actualizarInscripcion(sesiones,idNino,codHorario){
+	var datosEnviados={
+		'idNino'		: idNino,
+		'codHorario'	: codHorario,
+		'sesiones'		: sesiones
+		};
+		$.ajax({
+			type		:'POST',
+			url			:'http://localhost/brikssphp/model/ajaxjson/actualizarInscripcion.php',
+			data		:datosEnviados,
+			dataType	:'json',
+			encode		:true
+		}).done(function(data){
+			if (data){
+				alert("Datos Actualizados Correctamente");
+				$('#lblIdAlumno').change();
+			}else{
+				alert("verifique los datos");
+			}
+		});
+
 }

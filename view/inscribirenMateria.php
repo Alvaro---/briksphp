@@ -126,37 +126,38 @@
 
 	</div>
 
-	<div class="col-md-5 col-md-offset-1">
+	<div class="col-md-5 col-md-offset-1" id="datosInteres">
 
 		<h3>Datos de Interes</h3>
 		<br>
 		<div class="row">
-			<label> Horarios Disponibles:  </label>			
+			<label> Horarios del Alumno:  </label>			
 		</div>
 		<br>
 		<div class="row">
 			<label> Lunes:  </label>			
-			<label> </label>			
+			<!--<p id="lblMateriasLunes"> </p>			 -->
+			<ol id="contenerdorLunes"></ol>
 		</div>
 		<div class="row">
 			<label> Martes:  </label>			
-			<label> </label>			
+			<ol id="contenerdorMartes"></ol>		
 		</div>
 		<div class="row">
 			<label> Miercoles:  </label>			
-			<label> </label>			
+			<ol id="contenerdorMiercoles"></ol>		
 		</div>
 		<div class="row">
 			<label> Jueves:  </label>			
-			<label> </label>			
+			<ol id="contenerdorJueves"></ol>		
 		</div>
 		<div class="row">
 			<label> Viernes:  </label>			
-			<label> </label>			
+			<ol id="contenerdorViernes"></ol>		
 		</div>
 		<div class="row">
 			<label> Sabado:  </label>			
-			<label> </label>			
+			<ol id="contenerdorSabado"></ol>		
 		</div>
 
 	</div>
