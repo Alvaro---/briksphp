@@ -21,6 +21,7 @@ class controlRegistro{
 	public $apMaterno;
 	public $nacimiento;
 	public $telefono;
+	public $colegio;
 	public $notas;
 
 	//OBJETOS
@@ -51,6 +52,7 @@ class controlRegistro{
 		$this->apMaterno=$_REQUEST['apellidoMaterno'];
 		$this->nacimiento=$_REQUEST['nacimiento'];
 		$this->telefono=$_REQUEST['telefono'];
+		$this->colegio=$_REQUEST['colegio'];
 		$this->notas=$_REQUEST['notas'];
 
 		$this->nombrePapa=$_REQUEST['NombrePapa'];
@@ -70,6 +72,7 @@ class controlRegistro{
 
 		$this->nino->setNacimiento($this->nacimiento);
 		$this->nino->setTelefono($this->telefono);
+		$this->nino->setColegio($this->colegio);
 		$this->nino->setNotas($this->notas);
 
 		//CONTACTO PAPA - O CONTACTO1

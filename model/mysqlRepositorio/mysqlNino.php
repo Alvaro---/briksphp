@@ -16,14 +16,15 @@ class mysqlNino implements repositoriNino{
 		$apPaterno=$nino->getApPaterno();
 		$apMaterno=$nino->getApMaterno();
 		$telefono=$nino->getTelefono();
+		$colegio=$nino->getColegio();
 		$nacimiento=$nino->getNacimiento();
 		$notas=$nino->getNotas();
 		$contacto1=$nino->getIdContacto1();
 		$contacto2=$nino->getIdContacto2();
 
 		$this->db = Database::getInstance();
-		$sql="INSERT INTO nino (nombres, apPaterno, apMaterno, telefono, idContactoPapa, idContactoMama, nacimiento, notas, estado)
-		VALUES ('$nombre','$apPaterno','$apMaterno','$telefono','$contacto1','$contacto2','$nacimiento','$notas','no')";
+		$sql="INSERT INTO nino (nombres, apPaterno, apMaterno, telefono, idContactoPapa, idContactoMama, nacimiento, notas, estado, colegio)
+		VALUES ('$nombre','$apPaterno','$apMaterno','$telefono','$contacto1','$contacto2','$nacimiento','$notas','no','$colegio')";
 		$result=$this->db->exec($sql);
 		echo $result['ERROR'];
 		return $result['ERROR'];

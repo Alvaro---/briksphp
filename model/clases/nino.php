@@ -11,6 +11,7 @@ class nino{
 	public $apPaterno;
 	public $apMaterno;
 	public $telefono;
+	public $colegio;
 	public $nacimiento;
 	public $notas;
 	public $estado;
@@ -63,6 +64,14 @@ class nino{
 
 	public function setTelefono ($telefono){
 		$this->telefono=$telefono;
+	}
+
+	public function getColegio(){
+		return $this->colegio;
+	}
+
+	public function setColegio($colegio){
+		$this->colegio=$colegio;
 	}
 
 	public function getNacimiento (){

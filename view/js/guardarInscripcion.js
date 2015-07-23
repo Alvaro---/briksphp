@@ -37,13 +37,14 @@ function obtenerIdHorario(){
 }
 
 function guardarInscripcion(codHorario){
+
 	//alert(codHorario);
 	idNino=$('#lblIdAlumno').text();
 	//alert(idNino);
 	var sesiones=$('#txtNumeroSesiones').val();
 	var f = new Date();
 	hoy=f.getFullYear()+"-"+(f.getMonth() +1)+"-"+f.getDate();
-	if (idNino>'#'){
+	if (!isNaN(idNino)){
 		var datosEnviados={
 		'idNino'		: idNino,
 		'codHorario'	: codHorario,

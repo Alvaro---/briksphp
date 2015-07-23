@@ -32,7 +32,7 @@
 		<div class="row">
 		<label for="apellidoMaterno" class="col-md-4 control-label">Apellido Materno:</label>
 		<div class="col-md-7">
-			<input type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Paterno" name="apellidoMaterno">
+			<input type="text" class="form-control" id="apellidoMaterno" placeholder="Apellido Materno" name="apellidoMaterno">
 		</div>
 		</div>
 
@@ -47,6 +47,13 @@
 		<label for="telefono" class="col-md-4 control-label">Telefono:</label>
 		<div class="col-md-7">
 			<input type="number" class="form-control" id="telefono" placeholder="Telefono" name="telefono">
+		</div>
+		</div>
+
+		<div class="row">
+		<label for="telefono" class="col-md-4 control-label">Colegio:</label>
+		<div class="col-md-7">
+			<input type="text" class="form-control" id="colegio" placeholder="Colegio" name="colegio">
 		</div>
 		</div>
 
