@@ -35,6 +35,10 @@
 			return $this->repository->cargarHorario($this);
 		}
 
+		public function cargarAsistentesHoy(){
+			return $this->repository->cargarAsistentesHoy($this);	
+		}
+
 
 
 	}

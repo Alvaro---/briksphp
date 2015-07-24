@@ -21,4 +21,18 @@ class mysqlHorario implements repositoriHorario{
 		return $result;
 
 	}
+
+
+	public function cargarAsistentesHoy($horario){
+		$idMateria=$horario->getIdMateria();
+		$codHora=$horario->getCodHora();
+		//echo $idMateria;
+		$this->db=Database::getInstance();
+		//$sql="SELECT * FROM `horario` WHERE codHora ='$codHora'";
+		$sql="SELECT * FROM `view_sistentesdia` WHERE idMateria='$idMateria' and codHora='$codHora'";
+		//echo $sql;
+		$result=$this->db->get_data($sql);
+		//echo $result["DATA"];
+		return $result;
+	}
 }

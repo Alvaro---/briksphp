@@ -1,9 +1,8 @@
-$(document).on('ready',funcPrincipal);
+$(document).on('ready',funcPrincipal(new Date()));
 
+$("#cambioFecha").hide();
 
-function funcPrincipal(){
-	
-	var f = new Date();
+function funcPrincipal(f){
 
 	var dia=obtenerDia(f);
 	var hoy=obtenerFecha(f);	
@@ -12,6 +11,8 @@ function funcPrincipal(){
 	$("#lblDia").text(dia);
 	$("#lblFecha").text(hoy);
 	$('#HidenFechaReal').text(fechaBD);
+
+	$("#cambiarFecha").on("click",activarCambioFecha);
 }
 
 function obtenerFecha(f){
@@ -52,4 +53,33 @@ function obtenerDia(f){
 }
 function obtenerFechaFormatoBDMYSQL(f){
 	return f.getFullYear()+"-"+(f.getMonth() +1)+"-"+f.getDate();
+}
+
+
+function activarCambioFecha(){
+	$("#cambioFecha").show(1000);
+	$('#volverFecha').on("click", volverFecha);
+
+	$('#fecha').change(function(){
+		var f=$("#fecha").val();
+		cambiarFecha(f);
+	});
+
+}
+
+function volverFecha(){
+	$("#cambioFecha").hide("slow");
+}
+
+function cambiarFecha(f){
+	var from =f.split("-");
+	var ff = new Date(from[0], from[1]-1, from[2]);
+	var dia=obtenerDia(ff);
+	var hoy=obtenerFecha(ff);	
+	var fechaBD=f;
+
+	$("#lblDia").text(dia);
+	$('#selectEdad').change();
+	$("#lblFecha").text(hoy);
+	$('#HidenFechaReal').text(fechaBD);
 }

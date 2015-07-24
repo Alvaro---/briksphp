@@ -4,7 +4,11 @@
 <div class="container-fluid">
 
 	<div class="row">
-		<label class="col-md-1 col-md-offset-2">Fecha: </label> <label id="HidenFechaReal" hidden> </label> <label class="col-md-1" id="lblDia"> </label> <label id="lblFecha" class="col-md-4">tal fecha </label> <button type="button" class="col-md-2 btn btn-info">Modificar Fecha</button>
+		<label class="col-md-1 col-md-offset-2">Fecha: </label> <label id="HidenFechaReal" hidden> </label> <label class="col-md-1" id="lblDia"> </label> <label id="lblFecha" class="col-md-4">tal fecha </label> <button id="cambiarFecha" type="button" class="col-md-2 btn btn-info">Modificar Fecha</button>
+	</div>
+
+	<div class="row" id="cambioFecha" hidden>
+		<input id="fecha" type="date" class="col-md-3 col-md-offset-3"> <button id="volverFecha" type="button" class="col-md-2 btn btn-info">Vovler a Fecha Actual</button>
 	</div>
 
 	<br>
@@ -70,7 +74,7 @@
 
 			<tbody id="cuerpoTablaAsistencia">
 				<tr>
-					<th>Juan Perez Seras</th>
+					<td>Juan Perez Seras</td>
 				</tr>
 			</tbody>
 
