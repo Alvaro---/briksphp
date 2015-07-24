@@ -4,6 +4,7 @@
 
 	<div class="row">
 	<div class="col-md-5 col-md-offset-3">
+		
 		<label>Tipo</label>
 			<select class="form-control col-md-12">
 				<option>Horario Normal</option>

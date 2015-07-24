@@ -58,6 +58,8 @@ function cargarHoras(valor){
 		'materia'		:valor
 	};
 	var clases=$("#selectHoras");
+	var clases2=$("#selectHorasAsistencia");
+	varFecha=$("#lblDia").text();
 	$.ajax({
 		type		:'POST',
 		url			:'http://localhost/brikssphp/model/ajaxjson/cargarHoras.php',
@@ -67,7 +69,19 @@ function cargarHoras(valor){
 	}).done(function(data){
 		clases.find('option').remove();
 		$(data.DATA).each(function(i, v){ // indice, valor
-            clases.append('<option value="' + v.codHora + '">' + v.dia+': '+ v.horaInicial+" - "+v.horaFinal + '</option>');
+            clases.append('<option value="' + v.codHora + '">' + v.dia+': '+ v.horaInicial+" - "+v.horaFinal + '</option>').change();
         });
+
+        clases2.find('option').remove();
+		$(data.DATA).each(function(i, v){ // indice, valor
+			if (v.dia==varFecha){
+            	clases2.append('<option value="' + v.codHora + '">' +v.horaInicial+" - "+v.horaFinal + '</option>').change();
+			}
+        });
+
+
+
+
+
 	});
 }

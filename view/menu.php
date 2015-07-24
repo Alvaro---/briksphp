@@ -43,11 +43,12 @@ if(! isset($_SESSION["usuario"])){
 	<nav id="menu">
         <ul>
             <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=inicio.php">Inicio</a></li>
-            <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=niños.php">Niños</a>
+            <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=ni.php">Niños</a>
                 <ul>
                     <li><a href="/brikssphp/controller/controlMenu.php?pag=registro.php">Registar Niño</a></li>
                     <li><a href="/brikssphp/controller/controlMenu.php?pag=inscribirenMateria.php">Inscribir</a></li>
-                    <li><a href="/brikssphp/controller/controlMenu.php?pag=vern.php">Verificar Datos</a></li>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=marcarAsistencia.php">Asistencia</a></li>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=kardex.php">Kardex</a></li>
                 </ul>
             </li>
             <li class="nivel1"><a href="#">Materias</a> 
@@ -81,6 +82,7 @@ if(! isset($_SESSION["usuario"])){
 
     <hr>
     <br>
+    <hr>
     <hr>
 
 

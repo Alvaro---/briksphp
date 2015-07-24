@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-07-2015 a las 18:50:44
+-- Tiempo de generación: 24-07-2015 a las 18:16:52
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `contacto` (
   `celular` varchar(8) NOT NULL,
   `correo` varchar(50) NOT NULL,
   `direccion` varchar(100) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `contacto`
@@ -54,7 +54,10 @@ CREATE TABLE IF NOT EXISTS `contacto` (
 
 INSERT INTO `contacto` (`idContacto`, `nombre`, `celular`, `correo`, `direccion`) VALUES
 (1, '', '', '', ''),
-(2, 'Cesar Mercado', '72525503', 'cesar@hotmail.com', 'Alto Seguencoma calle 12');
+(2, 'Cesar Mercado', '72525503', 'cesar@hotmail.com', 'Alto Seguencoma calle 12'),
+(3, ' Alan Sanjines', '124578', 'alana@hotmail.com', 'Alto Tejar Calle 20 #85'),
+(4, 'Alana Martinez', '124578', 'alana@yahoo.es', 'Alto Tejar Calle 20 #85'),
+(5, 'Victor Pelaez', '784512', 'vico@hotmail.com', 'Obrajes calle 17 ');
 
 -- --------------------------------------------------------
 
@@ -68,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `horario` (
   `idMateria` int(11) NOT NULL,
   `aula` varchar(10) NOT NULL,
   `idDocente` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `horario`
@@ -76,7 +79,11 @@ CREATE TABLE IF NOT EXISTS `horario` (
 
 INSERT INTO `horario` (`idHorario`, `codHora`, `idMateria`, `aula`, `idDocente`) VALUES
 (1, 'A1', 1, '3', 2),
-(3, 'A2', 2, 'Robotica', 2);
+(3, 'A2', 2, 'Robotica', 2),
+(4, 'C1', 5, '5', 2),
+(5, 'E1', 6, 'a', 2),
+(6, 'B1', 6, '', 0),
+(7, 'D1', 5, '1', 2);
 
 -- --------------------------------------------------------
 
@@ -115,8 +122,35 @@ INSERT INTO `horas` (`codHora`, `horaInicial`, `horaFinal`, `dia`) VALUES
 CREATE TABLE IF NOT EXISTS `inscripcion` (
   `idInscripcion` int(11) NOT NULL,
   `idHorario` int(11) NOT NULL,
-  `idNino` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `idNino` int(11) NOT NULL,
+  `sesiones` int(11) NOT NULL,
+  `fechaInscripcion` date NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`idInscripcion`, `idHorario`, `idNino`, `sesiones`, `fechaInscripcion`) VALUES
+(14, 1, 1, 73, '2015-07-22'),
+(15, 3, 1, 4, '2015-07-22'),
+(16, 3, 3, 20, '0000-00-00'),
+(17, 4, 3, 36, '2015-07-08'),
+(18, 5, 2, 0, '0000-00-00'),
+(19, 4, 1, 0, '2015-07-22'),
+(20, 5, 1, 3, '2015-07-22'),
+(21, 1, 2, 7, '2015-07-22'),
+(22, 4, 2, 20, '2015-07-22'),
+(23, 5, 3, 7, '2015-07-22'),
+(24, 6, 1, 11, '2015-07-22'),
+(25, 6, 2, 9, '2015-07-22'),
+(26, 6, 3, 10, '2015-07-22'),
+(27, 1, 4, 4, '2015-07-23'),
+(29, 4, 5, 7, '2015-07-23'),
+(30, 1, 6, 7, '2015-07-23'),
+(31, 1, 5, 8, '2015-07-23'),
+(32, 7, 7, 2, '2015-07-24'),
+(33, 4, 7, 2, '2015-07-24');
 
 -- --------------------------------------------------------
 
@@ -170,17 +204,22 @@ CREATE TABLE IF NOT EXISTS `nino` (
   `idContactoMama` int(11) NOT NULL,
   `nacimiento` date NOT NULL,
   `notas` varchar(100) NOT NULL,
-  `estado` varchar(10) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `estado` varchar(10) NOT NULL,
+  `colegio` varchar(50) NOT NULL
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `nino`
 --
 
-INSERT INTO `nino` (`idNino`, `nombres`, `apPaterno`, `apMaterno`, `telefono`, `idContactoPapa`, `idContactoMama`, `nacimiento`, `notas`, `estado`) VALUES
-(1, 'Alvaro Miguel', 'Mercado', 'Valle', '2751200', 2, 1, '1992-02-08', '			', 'no'),
-(2, 'Matias', '', '', '784512', 1, 1, '2011-05-02', '			', 'no'),
-(3, 'Monserrat', '', '', '', 1, 1, '2003-02-05', '			', 'no');
+INSERT INTO `nino` (`idNino`, `nombres`, `apPaterno`, `apMaterno`, `telefono`, `idContactoPapa`, `idContactoMama`, `nacimiento`, `notas`, `estado`, `colegio`) VALUES
+(1, 'Alvaro Miguel', 'Mercado', 'Valle', '2751200', 2, 1, '1992-02-08', '			', 'no', ''),
+(2, 'Matias', '', '', '784512', 1, 1, '2011-05-02', '			', 'no', ''),
+(3, 'Monserrat', '', '', '', 1, 1, '2003-02-05', '			', 'no', ''),
+(4, 'Alan', 'Sanjines', 'Pelaez', '784512', 3, 4, '2012-12-15', '			', 'no', 'San Benito Nombre Largo'),
+(5, 'Lucero', 'Palaez', 'YaÃ±ez', '745120', 5, 1, '2000-12-18', '			', 'no', 'Colegio 3 de Tarija '),
+(6, 'Silvio', 'Rodriguez', '', '1234698', 1, 1, '2010-05-02', '			', 'no', 'San Ignacio de Loyola'),
+(7, 'Juan ', 'Perez', 'Seras', '2756532', 1, 1, '2011-02-05', '			', 'no', 'Santo Domingo ');
 
 -- --------------------------------------------------------
 
@@ -205,6 +244,50 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`idUsuario`, `nombre`, `telefono`, `nick`, `clave`, `tipo`, `calular`) VALUES
 (1, 'system', NULL, 'system', 'system', 'admin', '0000'),
 (2, 'system2', '2751200', 'system2', 'system2', 'user', '74084619');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `view_sesionesmateria`
+--
+CREATE TABLE IF NOT EXISTS `view_sesionesmateria` (
+`idMateria` int(11)
+,`suma` decimal(32,0)
+,`idNino` int(11)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `view_sistentesdia`
+--
+CREATE TABLE IF NOT EXISTS `view_sistentesdia` (
+`idHorario` int(11)
+,`idNino` int(11)
+,`sesiones` int(11)
+,`idInscripcion` int(11)
+,`idMateria` int(11)
+,`nombre` varchar(112)
+,`suma` decimal(32,0)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `view_sesionesmateria`
+--
+DROP TABLE IF EXISTS `view_sesionesmateria`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_sesionesmateria` AS select `a`.`idMateria` AS `idMateria`,sum(`b`.`sesiones`) AS `suma`,`c`.`idNino` AS `idNino` from ((`horario` `a` join `inscripcion` `b`) join `nino` `c`) where ((`b`.`idHorario` = `a`.`idHorario`) and (`c`.`idNino` = `b`.`idNino`)) group by `c`.`idNino`,`a`.`idMateria`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `view_sistentesdia`
+--
+DROP TABLE IF EXISTS `view_sistentesdia`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_sistentesdia` AS select `a`.`idHorario` AS `idHorario`,`b`.`idNino` AS `idNino`,`b`.`sesiones` AS `sesiones`,`b`.`idInscripcion` AS `idInscripcion`,`a`.`idMateria` AS `idMateria`,concat(`c`.`nombres`,' ',`c`.`apPaterno`,' ',`c`.`apMaterno`) AS `nombre`,`total`.`suma` AS `suma` from (((`horario` `a` join `inscripcion` `b`) join `nino` `c`) join `view_sesionesmateria` `total`) where ((`b`.`idHorario` = `a`.`idHorario`) and (`c`.`idNino` = `b`.`idNino`) and (`total`.`idNino` = `b`.`idNino`) and (`total`.`idMateria` = `a`.`idMateria`));
 
 --
 -- Índices para tablas volcadas
@@ -238,7 +321,7 @@ ALTER TABLE `horas`
 -- Indices de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  ADD PRIMARY KEY (`idInscripcion`), ADD KEY `foreignKey_inscripcion_horario` (`idHorario`), ADD KEY `foreignKey_inscripcion_Nino` (`idNino`);
+  ADD PRIMARY KEY (`idInscripcion`), ADD UNIQUE KEY `idHorario` (`idHorario`,`idNino`), ADD UNIQUE KEY `idHorario_2` (`idHorario`,`idNino`), ADD KEY `foreignKey_inscripcion_horario` (`idHorario`), ADD KEY `foreignKey_inscripcion_Nino` (`idNino`);
 
 --
 -- Indices de la tabla `materia`
@@ -277,17 +360,17 @@ ALTER TABLE `asistencia`
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idContacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `idHorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idHorario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
@@ -302,7 +385,7 @@ ALTER TABLE `modelos`
 -- AUTO_INCREMENT de la tabla `nino`
 --
 ALTER TABLE `nino`
-  MODIFY `idNino` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idNino` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
