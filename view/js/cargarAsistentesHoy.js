@@ -9,18 +9,19 @@ function funcPrincipal(){
 	/*edad.on("change", verificar);
 	materia.on("change", verificar);*/
 	horas.on("change", verificar);
-	materias.on("change", verificar);
-	edad.on("change", verificar);
+	//materias.on("change", verificar);
+	//edad.on("change", verificar);
 }
 
 function verificar(){
+	cuerpoTabla.find('tr').remove();
+	cuerpoTabla.find('td').remove();
 	if (horas.text().trim().length!=0){
 		var hora= horas.val();
 		var materia= materias.val();
 		var datosEnviados={
 		'hora'			:hora,
 		'materia'		:materia};
-
 		$.ajax({
 			type		:'POST',
 			url			:'http://localhost/brikssphp/model/ajaxjson/cargarAsistentesHoy.php',

@@ -45,8 +45,8 @@
 	<br>
 
 	<div class="row">
-		<label class="col-md-1">Modelo</label> <label class="col-md-2">Camion Arquitectura</label> <button type="button" class="col-md-2 btn btn-info">Modificar Modelo</button>
-		<label class="col-md-1 col-md-offset-1">Profesor</label> <label class="col-md-1">System2 </label> <button type="button" class="col-md-2 btn btn-info">Modificar Profesor</button>
+		<label class="col-md-1">Modelo</label> <label id="modelo" class="col-md-2"></label> <button type="button" class="col-md-2 btn btn-info" onclick="mostrarelDivModelos()">Modificar Modelo</button>
+		<label class="col-md-1 col-md-offset-1">Profesor</label> <label class="col-md-1" id="profe"></label> <button type="button" class="col-md-2 btn btn-info">Modificar Profesor</button>
 	</div>
 
 	<br>
@@ -83,6 +83,13 @@
 	</div>
 
 	<div class="row">
+		<button class="col-md-2 col-md-offset-5 btn btn-info">Aumentar Nino</button>
+	</div>
+
+	<br>
+	<br>
+
+	<div class="row">
 		<button class="col-md-2 col-md-offset-5 btn btn-primary">Marcar Asistencia</button>
 	</div>
 
@@ -92,8 +99,30 @@
 	<br>
 
 
+	<div class="modall" id="modalModelo" style="display:none">
+	 	<div id="contenido-interno">
+	 		<div class="row">
+	 			<h4>Selecciona el contacto de la siguiente lista</h4>
+	 		</div>
+
+	 		<div class="row">
+	 			<div class="col-md-4 col-md-offset-4">
+	 			Buscar <input type="search">
+	 			</div>
+	 		</div>
+	 			Contactos:
+
+			<div class="row">
+				<button type="button" class="btn btn-info">Aceptar</button>
+				<button type="button" class="btn btn-info" onclick="ocultareldivModelos()">Cerrar</button>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../view/js/cargarDatosAsistencia.js"></script>
 	<script type="text/javascript" src="../view/js/cargarFechaHoy.js"></script>
 	<script type="text/javascript" src="../view/js/cargarMateriasPorEdades.js"></script>
 	<script type="text/javascript" src="../view/js/cargarAsistentesHoy.js"></script>
+	<script type="text/javascript" src="../view/js/mostrarDivsInscripcion.js"></script>
 
 </div>

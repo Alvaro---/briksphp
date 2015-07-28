@@ -1,4 +1,4 @@
-function mostrareldivContacto() {
+function mostrarelDiv() {
 	document.getElementById("modal").style.display = "block" ; // permite asignar display:block al elemento #modal
 }
 

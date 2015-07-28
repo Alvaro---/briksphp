@@ -74,7 +74,7 @@
 
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<button type="button" class="btn btn-info" onclick="mostrareldivContacto()">Contacto Existente (Papá)</button>
+				<button type="button" class="btn btn-info" onclick="mostrarelDiv()">Contacto Existente (Papá)</button>
 			</div>
 		</div>
 
@@ -110,7 +110,7 @@
 		<!-- DATOS DE MAMA -->
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
-				<button type="button" class="btn btn-info" onclick="mostrareldivContacto()">Contacto Existente (Mamá)</button>
+				<button type="button" class="btn btn-info" onclick="mostrarelDiv()">Contacto Existente (Mamá)</button>
 			</div>
 		</div>
 

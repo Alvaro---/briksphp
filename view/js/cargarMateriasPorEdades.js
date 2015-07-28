@@ -77,6 +77,7 @@ function cargarHoras(valor){
 			if (v.dia==varFecha){
             	clases2.append('<option value="' + v.codHora + '">' +v.horaInicial+" - "+v.horaFinal + '</option>').change();
 			}
+			clases2.change();
         });
 
 
