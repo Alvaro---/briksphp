@@ -45,8 +45,8 @@
 	<br>
 
 	<div class="row">
-		<label class="col-md-1">Modelo</label> <label id="modelo" class="col-md-2"></label> <button type="button" class="col-md-2 btn btn-info" onclick="mostrarelDivModelos()">Modificar Modelo</button>
-		<label class="col-md-1 col-md-offset-1">Profesor</label> <label class="col-md-1" id="profe"></label> <button type="button" class="col-md-2 btn btn-info">Modificar Profesor</button>
+		<label class="col-md-1">Modelo</label> <label hidden id="idModelo" class="col-md-1"></label>  <label id="modelo" class="col-md-2"></label> <button type="button" class="col-md-2 btn btn-info" onclick="mostrarelDivModelos()">Modificar Modelo</button>
+		<label class="col-md-1 col-md-offset-1">Profesor</label> <label hidden id="idProfe" class="col-md-1"></label>  <label class="col-md-1" id="profe"></label> <button type="button" class="col-md-2 btn btn-info">Modificar Profesor</button>
 	</div>
 
 	<br>
@@ -90,7 +90,7 @@
 	<br>
 
 	<div class="row">
-		<button class="col-md-2 col-md-offset-5 btn btn-primary">Marcar Asistencia</button>
+		<button class="col-md-2 col-md-offset-5 btn btn-primary" id="btnGuardarAsistencia">Marcar Asistencia</button>
 	</div>
 
 
@@ -124,5 +124,6 @@
 	<script type="text/javascript" src="../view/js/cargarMateriasPorEdades.js"></script>
 	<script type="text/javascript" src="../view/js/cargarAsistentesHoy.js"></script>
 	<script type="text/javascript" src="../view/js/mostrarDivsInscripcion.js"></script>
+	<script type="text/javascript" src="../view/js/guardarAsistencia.js"></script>
 
 </div>

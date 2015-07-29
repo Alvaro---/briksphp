@@ -36,9 +36,17 @@ function cambiarModelos(){
 			encode		:true
 		}).done(function(data){
 			console.log(data);
+			$("#idModelo").html(data.DATA[0].idModelo);
+			$("#idProfe").html(data.DATA[0].idDocente);
 			$("#modelo").html(data.DATA[0].modelo);
 			$("#profe").html(data.DATA[0].nombre+" - "+data.DATA[0].telefono);
 		});
 
+	}
+	else{
+		$("#modelo").html("");
+		$("#profe").html("");
+		$("#idModelo").html("");
+		$("#idProfe").html("");
 	}
 }

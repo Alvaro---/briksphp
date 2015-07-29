@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-07-2015 a las 19:11:03
+-- Tiempo de generación: 29-07-2015 a las 17:47:12
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -32,14 +32,37 @@ CREATE TABLE IF NOT EXISTS `asistencia` (
   `idModelo` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `idInscripcion` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `asistencia`
 --
 
 INSERT INTO `asistencia` (`idAsistencia`, `fecha`, `idModelo`, `idUsuario`, `idInscripcion`) VALUES
-(1, '2015-07-07', 1, 1, 27);
+(1, '2015-07-07', 1, 1, 27),
+(2, '2015-07-29', 1, 2, 14),
+(3, '2015-07-29', 2, 0, 15),
+(4, '2015-07-29', 1, 2, 20),
+(5, '2015-07-29', 0, 0, 19),
+(6, '2015-07-27', 0, 0, 14),
+(7, '2015-07-26', 1, 1, 14),
+(8, '0000-00-00', 0, 0, 0),
+(9, '2015-07-29', 2, 2, 0),
+(10, '2015-07-29', 2, 2, 33),
+(11, '2015-07-29', 2, 2, 29),
+(12, '2015-07-29', 2, 2, 22),
+(13, '2015-07-28', 1, 1, 24),
+(14, '2015-07-28', 1, 1, 26),
+(15, '2015-07-28', 1, 1, 35);
+
+--
+-- Disparadores `asistencia`
+--
+DELIMITER $$
+CREATE TRIGGER `triger_bajaSesionesRestantes` AFTER INSERT ON `asistencia`
+ FOR EACH ROW UPDATE inscripcion SET sesiones = sesiones - 1 WHERE idInscripcion = NEW.idInscripcion
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -79,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
   `idHorario` int(11) NOT NULL,
   `idModelo` int(11) NOT NULL,
   `nota` varchar(40) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cronograma`
@@ -87,7 +110,8 @@ CREATE TABLE IF NOT EXISTS `cronograma` (
 
 INSERT INTO `cronograma` (`idCronograma`, `fecha`, `idHorario`, `idModelo`, `nota`) VALUES
 (1, '2015-07-28', 4, 2, 'Si viene Juancito hacer otro modelo'),
-(3, '2015-07-28', 6, 1, 'Si viene Pedrito no hacer nada');
+(3, '2015-07-28', 6, 1, 'Si viene Pedrito no hacer nada'),
+(4, '2015-07-29', 4, 2, '');
 
 -- --------------------------------------------------------
 
@@ -164,27 +188,27 @@ CREATE TABLE IF NOT EXISTS `inscripcion` (
 --
 
 INSERT INTO `inscripcion` (`idInscripcion`, `idHorario`, `idNino`, `sesiones`, `fechaInscripcion`) VALUES
-(14, 1, 1, 73, '2015-07-22'),
-(15, 3, 1, 4, '2015-07-22'),
+(14, 1, 1, 70, '2015-07-22'),
+(15, 3, 1, 3, '2015-07-22'),
 (16, 3, 3, 20, '0000-00-00'),
 (17, 4, 3, 36, '2015-07-08'),
 (18, 5, 2, 0, '0000-00-00'),
-(19, 4, 1, 0, '2015-07-22'),
-(20, 5, 1, 3, '2015-07-22'),
+(19, 4, 1, -1, '2015-07-22'),
+(20, 5, 1, 2, '2015-07-22'),
 (21, 1, 2, 7, '2015-07-22'),
-(22, 4, 2, 20, '2015-07-22'),
+(22, 4, 2, 19, '2015-07-22'),
 (23, 5, 3, 7, '2015-07-22'),
-(24, 6, 1, 11, '2015-07-22'),
+(24, 6, 1, 10, '2015-07-22'),
 (25, 6, 2, 9, '2015-07-22'),
-(26, 6, 3, 10, '2015-07-22'),
+(26, 6, 3, 9, '2015-07-22'),
 (27, 1, 4, 4, '2015-07-23'),
-(29, 4, 5, 7, '2015-07-23'),
+(29, 4, 5, 6, '2015-07-23'),
 (30, 1, 6, 7, '2015-07-23'),
 (31, 1, 5, 8, '2015-07-23'),
 (32, 7, 7, 2, '2015-07-24'),
-(33, 4, 7, 2, '2015-07-24'),
+(33, 4, 7, 1, '2015-07-24'),
 (34, 7, 1, 1, '2015-07-24'),
-(35, 6, 8, 2, '2015-07-24'),
+(35, 6, 8, 1, '2015-07-24'),
 (36, 5, 8, 2, '2015-07-24'),
 (37, 3, 8, 4, '2015-07-24'),
 (38, 8, 8, 4, '2015-07-24');
@@ -344,7 +368,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Indices de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  ADD PRIMARY KEY (`idAsistencia`), ADD KEY `foreignKey_asistencia_usuario` (`idUsuario`), ADD KEY `foreignKey_asistencia_inscripcion` (`idInscripcion`), ADD KEY `asistencia_ibfk_1` (`idModelo`);
+  ADD PRIMARY KEY (`idAsistencia`), ADD UNIQUE KEY `fecha` (`fecha`,`idInscripcion`), ADD KEY `foreignKey_asistencia_usuario` (`idUsuario`), ADD KEY `foreignKey_asistencia_inscripcion` (`idInscripcion`), ADD KEY `asistencia_ibfk_1` (`idModelo`);
 
 --
 -- Indices de la tabla `contacto`
@@ -408,7 +432,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `idAsistencia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idAsistencia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
@@ -418,7 +442,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `cronograma`
 --
 ALTER TABLE `cronograma`
-  MODIFY `idCronograma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idCronograma` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `horario`
 --
