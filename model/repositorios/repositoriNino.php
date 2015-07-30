@@ -13,6 +13,13 @@ interface repositoriNino{
 	public function cargarNinosTelefono($telf);
 	//obtiene el nombre y el telefono y carga los ni;os con esos datos (solo deberia devolver un registro)
 	public function cargarNinosNombreTelf($nombre, $telf);
+	//BUSCA DENTRO DE LA VISTA KARDEX. NO SE LA LLAMA TODOE EL TIEMPO PARA MEJORAR EL RENDIMIENTO DE LA BASE DE DATOS
+	public function cargarKardexNombre($nombre);
+	//obtiene el telefono y carga EL KARDEX con ese telefono
+	public function cargarKardexTelefono($telf);
+	//obtiene el nombre y el telefono y carga EL KARDEX con esos datos (solo deberia devolver un registro)
+	public function cargarKardexNombreTelf($nombre, $telf);
+
 }
 
 

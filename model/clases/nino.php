@@ -138,6 +138,18 @@ class nino{
 	public function cargarNinosNombreTelf($nombre, $telf){
 		return $this->repository->cargarNinosNombreTelf($nombre, $telf);
 	}
+
+	public function cargarKardexNombre($nombre){
+		return $this->repository->cargarKardexNombre($nombre);
+	}
+
+	public function cargarKardexTelefono($telf){
+		return $this->repository->cargarKardexTelefono($telf);
+	}
+
+	public function cargarKardexNombreTelf($nombre, $telf){
+		return $this->repository->cargarKardexNombreTelf($nombre, $telf);
+	}
 }
 
 ?>

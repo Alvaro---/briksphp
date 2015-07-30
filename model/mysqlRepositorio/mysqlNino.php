@@ -69,6 +69,31 @@ class mysqlNino implements repositoriNino{
 		$result=$this->db->get_data($sql);
 		return $result;
 	}
+
+	//CARGA EL KARDEX
+	public function cargarKardexNombre($nombre){
+		$this->db=Database::getInstance();
+		$sql="SELECT * FROM kardex WHERE nombre like  '%".str_replace(" ", "%", $nombre)."%' order by nombre";
+		//echo $sql;
+		$result=$this->db->get_data($sql);
+		return $result;
+	}
+
+	public function cargarKardexTelefono($telf){
+		$this->db=Database::getInstance();
+		$sql="SELECT * FROM kardex WHERE telefono like '%$telf%' order by nombre";
+		//echo $sql;
+		$result=$this->db->get_data($sql);
+		return $result;
+	}
+
+	public function cargarKardexNombreTelf($nombre, $telf){
+		$this->db=Database::getInstance();
+		$sql="SELECT * FROM kardex WHERE nombre like  '%".str_replace(" ", "%", $nombre)."%' AND telefono like'%$telf%' order by nombre";
+		//echo $sql;
+		$result=$this->db->get_data($sql);
+		return $result;
+	}
 }
 
 ?>
