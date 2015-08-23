@@ -39,6 +39,14 @@
 			return $this->repository->cargarAsistentesHoy($this);	
 		}
 
+		public function cagarModelosHechos(){
+			return $this->repository->cagarModelosHechos($this);
+		}
+
+		public function cagarModelosNoHechos(){
+			return $this->repository->cagarModelosNoHechos($this);
+		}
+
 
 
 	}

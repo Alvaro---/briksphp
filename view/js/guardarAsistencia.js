@@ -14,7 +14,7 @@ function guardar(){
 
 	//alert($('#idModelo').html());
 	//alert($('#idProfe').html());
-	if($("#modelo").html().length>0){
+	if($("#modelo").html().length>0){	 //verificar si existe un modelo establecido
 		$('#cuerpoTablaAsistencia > tr').each(function(){
 			var isCheck=$(this).find('td:eq(4) input:checkbox').is(':checked');
 			var idInscripcion =$(this).find("td:eq(4) input").val();

@@ -16,7 +16,7 @@ function funcPrincipal(){
 		cargarHoras(valor);
 	});
 }
-
+//carga las materias en base a la edad dada
 function cargarMateriasDisponibles(){
 	var datosEnviados={
 		'menorEdad'		:menorEdad,
@@ -67,6 +67,7 @@ function cargarHoras(valor){
 		dataType	:'json',
 		encode		:true
 	}).done(function(data){
+		//console.log(data);
 		clases.find('option').remove();
 		$(data.DATA).each(function(i, v){ // indice, valor
             clases.append('<option value="' + v.codHora + '">' + v.dia+': '+ v.horaInicial+" - "+v.horaFinal + '</option>').change();
@@ -79,10 +80,5 @@ function cargarHoras(valor){
 			}
 			clases2.change();
         });
-
-
-
-
-
 	});
 }

@@ -60,7 +60,7 @@ if(! isset($_SESSION["usuario"])){
             <li class="nivel1"><a href="/brikssphp/controller/controlMenu.php?pag=modelos.php">Modelos</a>
                 <ul>
                     <li><a href="/brikssphp/controller/controlMenu.php?pag=vermaterias">Ver cronograma de clases</a></li>
-                    <li><a href="/brikssphp/controller/controlMenu.php?pag=vermaterias">Asignar modelos</a></li>
+                    <li><a href="/brikssphp/controller/controlMenu.php?pag=armarCronograma.php">Asignar modelos</a></li>
                 </ul>
             </li>
             <li class="nivel1"><a href="#">Horarios</a>
