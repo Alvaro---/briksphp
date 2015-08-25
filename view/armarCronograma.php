@@ -59,21 +59,17 @@
 </div>
 <div class="row col-md-5 col-md-offset-2">
 <label>Todos los modelos de la materia</label>
-	<select class="form-control col-md-12">
-		<option>conejor</option>
-		<option>barco</option>
+	<select class="form-control col-md-12" id="modelosMateria">
 	</select>
 </div>
 <div class="row col-md-5 col-md-offset-2">
 <label>Materia y modelo</label>
-	<select class="form-control col-md-12">
-		<option>Arquitecturar</option>
-		<option>Ingenieria</option>
+	<select class="form-control col-md-12" id="materiasTodas">
+
 	</select>
 
 	<select class="form-control col-md-12">
-		<option>mnodelo arqui</option>
-		<option>otro modelo arqui</option>
+
 	</select>
 </div>
 <br><br>
@@ -85,4 +81,5 @@
 <script type="text/javascript" src="../view/js/cargarMateriasPorEdades.js"></script>
 <script type="text/javascript" src="../view/js/cambiarFechaCronograma.js"></script>
 <script type="text/javascript" src="../view/js/buscarDatosAlumnosCronograma.js"></script>
+<<!--<script type="text/javascript" src="../view/js/cargarModelosPorMaterias.js"></script> -->
 

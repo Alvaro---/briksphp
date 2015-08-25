@@ -19,5 +19,6 @@ class mysqlMateria implements repositoriMateria{
 		//echo $result["DATA"];
 		return $result;
 	}
+
 }
 ?>

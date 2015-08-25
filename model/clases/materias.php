@@ -62,8 +62,6 @@
 			return $this->repository->cargarMateriaEdades($this);
 		}
 
-
-
 	}
 
 

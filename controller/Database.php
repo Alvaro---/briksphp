@@ -48,12 +48,11 @@ class Database
             while($row = $res->fetch_array(MYSQLI_ASSOC))
             {
                 $ret['DATA'][] = $row;
-                //echo $row['materia'].' ';
+                //echo $row['modelo'].' ';
             }   
-            
         }
         else// ADERIDO PARAMETRO DE MISQLI_ERROR
-            $ret['ERROR'] = mysqli_error($mysqli);            
+            $ret['ERROR'] = mysqli_error($mysqli);  
         return $ret;
     }
     // EJECUTA QUERRY (INSERT, UPDATE, DELETE,...)

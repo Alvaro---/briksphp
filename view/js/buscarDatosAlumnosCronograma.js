@@ -5,6 +5,7 @@ var horas=$("#selectHorasAsistencia");
 var materias=$("#selectMaterias");
 var cuerpoTabla=$("#cuerpoTablaModelosEchos");
 var selectDisponibles=$("#selectModelosDisponibles");
+var selectModelosMaterias=$("#modelosMateria");
 
 function funcPrincipal(){
 	btnBuscar.on("click", cargarDatosAlumnos);
@@ -54,11 +55,37 @@ function cargarDisponibles(hora, materia){
 		dataType	:'json',
 		encode		:true
 	}).done(function(data){
-		console.log(data);
+		//console.log(data);
 		selectDisponibles.find('option').remove();
 		$(data.DATA).each(function(i, v){ // indice, valor
             selectDisponibles.append('<option value="' + v.idModelo + '">' + v.modelo + '</option>').change();
         });
+	});	
+	cargarModelosMateria();
+}
+
+function cargarModelosMateria(){
+	var materia= materias.val();
+	var datosEnviados={
+		'idMateria'	:materia
+	};
+	alert(materia);
+	$.ajax({
+		type		:'POST',
+		url			:'http://localhost/brikssphp/model/ajaxjson/cargarModelosMateria.php',
+		data		:datosEnviados,
+		dataType	:'json',
+		/*error: 		function(XMLHttpRequest, textStatus, errorThrown) {
+     					alert(XMLHttpRequest.responseText);
+  		},*/
+		encode		:true
+	}).done(function(data){
+		console.log(data);
+		selectModelosMaterias.find('option').remove();
+		$(data.DATA).each(function(i, v){ // indice, valor
+            selectModelosMaterias.append('<option value="' + v.idModelo + '">' + v.modelo + '</option>').change();
+        });
+		
 	});	
 
 }
