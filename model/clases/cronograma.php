@@ -48,8 +48,29 @@
 			$this->fecha=$fecha;
 		}
 
+		public function getIdModelo(){
+			return $this->idModelo;
+		}
+
+		public function setIdModelo($idModelo){
+			$this->idModelo=$idModelo;
+		}
+
+		public function getNota(){
+			return $this->nota;
+		}
+
+		public function setNota($nota){
+			$this->nota=$nota;
+		}
+
+
 		public function cargarDatosHoy(){
 			return $this->repository->cargarDatosHoy($this);	
+		}
+
+		public function guardarCronograma(){
+			return $this->repository->guardarCronograma($this);	
 		}
 
 

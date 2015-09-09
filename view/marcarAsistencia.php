@@ -69,13 +69,11 @@
 					<th>Sesiones restantes por materia</th>
 					<th>Sesiones restantes por dia</th>
 					<th>Asistencia</th>
+					<th>Falta Sin Permiso</th>
 				</tr>
 			</thead>
 
 			<tbody id="cuerpoTablaAsistencia">
-				<tr>
-					<td>Juan Perez Seras</td>
-				</tr>
 			</tbody>
 
 		</table>

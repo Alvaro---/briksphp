@@ -6,9 +6,11 @@ var materias=$("#selectMaterias");
 var cuerpoTabla=$("#cuerpoTablaModelosEchos");
 var selectDisponibles=$("#selectModelosDisponibles");
 var selectModelosMaterias=$("#modelosMateria");
+var fecha;
 
 function funcPrincipal(){
 	btnBuscar.on("click", cargarDatosAlumnos);
+	btnBuscar.on("click", buscarModeloAsignado);
 }
 
 function cargarDatosAlumnos(){
@@ -69,7 +71,7 @@ function cargarModelosMateria(){
 	var datosEnviados={
 		'idMateria'	:materia
 	};
-	alert(materia);
+	//alert(materia);
 	$.ajax({
 		type		:'POST',
 		url			:'http://localhost/brikssphp/model/ajaxjson/cargarModelosMateria.php',
@@ -87,5 +89,40 @@ function cargarModelosMateria(){
         });
 		
 	});	
+	
+}
 
+function buscarModeloAsignado(){
+	$("#idModelo").html("");
+	$("#modelo").html("");
+	if (horas.val()!=null && materias.val()!=null){
+		var hor=horas.val();
+		var mat=materias.val();
+		var fe=$("#fecha").val();
+		var datosEnviados={
+		'hora'			:hor,
+		'materia'		:mat,
+		'fecha'			:fe};
+		$.ajax({
+			type		:'POST',
+			url			:'http://localhost/brikssphp/model/ajaxjson/cargarDatosHoy.php',
+			data		:datosEnviados,
+			dataType	:'json',
+			error		:function(xhr, status, error) {
+			  				var err = eval("(" + xhr.responseText + ")");
+			  				alert(err.Message)},
+			encode		:true
+		}).done(function(data){
+			console.log(data);
+			$("#idModelo").html(data.DATA[0].idModelo);
+			$("#modelo").html(data.DATA[0].modelo);
+		});
+
+	}
+	else{
+		$("#modelo").html("");
+		$("#profe").html("");
+		$("#idModelo").html("");
+		$("#idProfe").html("");
+	}
 }

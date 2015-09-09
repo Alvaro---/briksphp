@@ -23,6 +23,24 @@ class mysqlCronograma implements repositoriCronograma{
 
 	}
 
+	public function guardarCronograma($cronograma){
+		$idMateria=$cronograma->getIdMateria();
+		$codHora=$cronograma->getCodHora();
+		$fecha=$cronograma->getFecha();
+		$nota=$cronograma->getNota();
+		$idModelo=$cronograma->getIdModelo();
+
+		$this->db=Database::getInstance();
+
+		$sql="INSERT INTO cronograma (fecha, idHorario, idModelo, nota) 
+			  VALUES ('$fecha', (SELECT idhorario FROM horario WHERE codHora='$codHora' and idMateria='$idMateria'), '$idModelo','$nota')";
+		//echo $sql;
+		$result=$this->db->exec($sql);
+		//echo $result['ERROR'];
+		return $result['ERROR'];
+
+	}
+
 
 
 }

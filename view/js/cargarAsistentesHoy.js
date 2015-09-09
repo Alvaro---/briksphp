@@ -39,7 +39,7 @@ function verificar(){
             		'<td>' + v.suma + '</td>'+
             		'<td>' + v.sesiones + '</td>'+
             		'<td> <input type="checkbox" id="'+v.idInscripcion+'" value="'+v.idInscripcion+'"/> </td>'+
-
+					'<td> <input type="checkbox" id="'+v.idInscripcion+'" value="'+v.idInscripcion+'"/> </td>'+
             		'</tr>').change();
         	});
 		});
